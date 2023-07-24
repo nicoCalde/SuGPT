@@ -49,3 +49,6 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+
+      - name: Set API Key as an Environment Variable
+        run: echo "REACT_APP_API_KEY=${{ secrets.VITE_SOME_KEY }}" >> $GITHUB_ENV
