@@ -6,8 +6,6 @@ export default defineConfig({
   plugins: [react()],
   base: "/SuGPT/",
   define: {
-    'process.env': {
-      REACT_APP_API_KEY: JSON.stringify(import.meta.env.VITE_SOME_KEY),
-    },
+    'process.env.REACT_APP_API_KEY': JSON.stringify(import.meta.env.VITE_SOME_KEY),
   },
-})
+});
