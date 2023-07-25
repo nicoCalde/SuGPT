@@ -43,6 +43,9 @@ jobs:
         with:
           name: production-files
           path: ./dist
+      
+      - name: Show current directory contents
+        run: ls -la  # Agrega este comando para ver el contenido del directorio actual
 
       - name: Set up Node
         uses: actions/setup-node@v2
