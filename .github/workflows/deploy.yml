@@ -33,7 +33,6 @@ jobs:
 
   deploy:
     name: Deploy
-    environment: production
     needs: build
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
@@ -44,6 +43,21 @@ jobs:
         with:
           name: production-files
           path: ./dist
+
+      - name: Set up Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Configure environment variables
+        env:
+          VITE_SOME_KEY: ${{ secrets.VITE_SOME_KEY }}
+        run: |
+          # Aquí puedes acceder a la API key a través de la variable de entorno VITE_SOME_KEY
+          echo "Mi API key es $VITE_SOME_KEY"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
